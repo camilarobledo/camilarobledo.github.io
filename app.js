@@ -76,7 +76,9 @@ const observer = new IntersectionObserver((entries) => {
     progressValue.style.height = `${((activeIndex + 1) / scenes.length) * 100}%`;
     entry.target.querySelectorAll(".reveal").forEach((item) => item.classList.add("visible"));
   });
-}, { threshold: .42 });
+// Use a viewport band: tall mobile sections cannot reach a percentage
+// threshold based on their full height (e.g. the volunteer screenshots).
+}, { threshold: 0, rootMargin: "-15% 0px -55% 0px" });
 
 scenes.forEach((scene) => observer.observe(scene));
 document.querySelectorAll(".scene:first-child .reveal").forEach((item) => item.classList.add("visible"));
