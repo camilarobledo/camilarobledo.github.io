@@ -273,7 +273,7 @@ details p { color: rgba(255,255,255,.75); font-size: 15px; }
   .other-projects-grid { grid-template-columns: 1fr; }
   .other-project-card { min-height: 270px; padding: 30px 24px; }
   .social-flow {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 28px;
     overflow: visible;
     scroll-snap-type: none;
@@ -283,6 +283,12 @@ details p { color: rgba(255,255,255,.75); font-size: 15px; }
     width: 100%;
     min-width: 0;
     scroll-snap-align: none;
+  }
+  /* Keep the long screenshot section readable independently of animation. */
+  .scene[data-scene="11"] .scene-inner {
+    min-width: 0;
+    opacity: 1;
+    transform: none;
   }
   .social-flow img {
     display: block;
